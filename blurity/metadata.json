@@ -3,7 +3,7 @@
     "name": "blurity",
     "author": "Diramix",
     "description": "The Big Blur",
-    "version": "1.0.2",
+    "version": "1.1.0",
     "css": "style.css",
     "script": "script.js"
 }
