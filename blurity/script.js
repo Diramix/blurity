@@ -43,21 +43,26 @@ const updateBackgroundImage = (imgBackground) => {
         tempLayer.style.backgroundImage = `url(${imgBackground})`;
         tempLayer.style.filter = 'blur(3px) brightness(0.5)';
 
-        document.body.appendChild(tempLayer);
+        // Добавляем слой только после полной загрузки изображения
+        const img = new Image();
+        img.src = imgBackground;
+        img.onload = () => {
+            document.body.appendChild(tempLayer);
 
-        requestAnimationFrame(() => {
-            tempLayer.style.opacity = '1'
+            requestAnimationFrame(() => {
+                tempLayer.style.opacity = '1';
 
-            tempLayer.addEventListener('transitionend', () => {
-                if (backgroundLayer) {
-                    backgroundLayer.remove();
-                }
-                backgroundLayer = tempLayer;
-                isAnimating = false;
+                tempLayer.addEventListener('transitionend', () => {
+                    if (backgroundLayer) {
+                        backgroundLayer.remove();
+                    }
+                    backgroundLayer = tempLayer;
+                    isAnimating = false;
+                });
             });
-        });
 
-        isAnimating = true;
+            isAnimating = true;
+        };
     }
 };
 
@@ -77,6 +82,7 @@ setInterval(() => {
         currentImgBackground = imgBackground;
     }
 }, 1000);
+
 
 // Отключение тупого даблклика
 function disableDoubleClick() {
