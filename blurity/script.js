@@ -9,10 +9,10 @@ const initializeBackgroundLayer = () => {
         backgroundLayer.classList.add('dynamic-background-layer');
         document.body.appendChild(backgroundLayer);
         backgroundLayer.style.position = 'fixed';
-        backgroundLayer.style.top = '0';
-        backgroundLayer.style.left = '0';
-        backgroundLayer.style.width = '100vw';
-        backgroundLayer.style.height = '100vh';
+        backgroundLayer.style.top = '-10px'; // смещение на 10px за границу экрана сверху
+        backgroundLayer.style.left = '-10px'; // смещение на 10px за границу экрана слева
+        backgroundLayer.style.width = 'calc(100vw + 20px)'; // увеличение ширины на 20px (по 10px с каждой стороны)
+        backgroundLayer.style.height = 'calc(100vh + 20px)'; // увеличение высоты на 20px (по 10px с каждой стороны)
         backgroundLayer.style.zIndex = '-2';
         backgroundLayer.style.backgroundSize = 'cover';
         backgroundLayer.style.backgroundPosition = 'center';
@@ -31,10 +31,10 @@ const updateBackgroundImage = (imgBackground) => {
 
         const tempLayer = document.createElement('div');
         tempLayer.style.position = 'fixed';
-        tempLayer.style.top = '0';
-        tempLayer.style.left = '0';
-        tempLayer.style.width = '100vw';
-        tempLayer.style.height = '100vh';
+        tempLayer.style.top = '-10px'; // смещение на 10px за границу экрана сверху
+        tempLayer.style.left = '-10px'; // смещение на 10px за границу экрана слева
+        tempLayer.style.width = 'calc(100vw + 20px)'; // увеличение ширины на 20px
+        tempLayer.style.height = 'calc(100vh + 20px)'; // увеличение высоты на 20px
         tempLayer.style.zIndex = '-1';
         tempLayer.style.backgroundSize = 'cover';
         tempLayer.style.backgroundPosition = 'center';
@@ -43,7 +43,6 @@ const updateBackgroundImage = (imgBackground) => {
         tempLayer.style.backgroundImage = `url(${imgBackground})`;
         tempLayer.style.filter = 'blur(3px) brightness(0.5)';
 
-        // Добавляем слой только после полной загрузки изображения
         const img = new Image();
         img.src = imgBackground;
         img.onload = () => {
@@ -82,7 +81,6 @@ setInterval(() => {
         currentImgBackground = imgBackground;
     }
 }, 1000);
-
 
 // Отключение тупого даблклика
 function disableDoubleClick() {
