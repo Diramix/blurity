@@ -1,4 +1,65 @@
+// Фоновая картинка
 let currentImgBackground = "";
+let isAnimating = false;
+let backgroundLayer = null;
+
+const initializeBackgroundLayer = () => {
+    if (!backgroundLayer) {
+        backgroundLayer = document.createElement('div');
+        backgroundLayer.classList.add('dynamic-background-layer');
+        document.body.appendChild(backgroundLayer);
+        backgroundLayer.style.position = 'fixed';
+        backgroundLayer.style.top = '0';
+        backgroundLayer.style.left = '0';
+        backgroundLayer.style.width = '100vw';
+        backgroundLayer.style.height = '100vh';
+        backgroundLayer.style.zIndex = '-2';
+        backgroundLayer.style.backgroundSize = 'cover';
+        backgroundLayer.style.backgroundPosition = 'center';
+        backgroundLayer.style.transition = 'opacity 1s ease';
+        backgroundLayer.style.willChange = 'opacity, background-image';
+        backgroundLayer.style.transform = 'translateZ(0)';
+        backgroundLayer.style.filter = 'blur(3px) brightness(0.5)';
+    }
+};
+
+const updateBackgroundImage = (imgBackground) => {
+    if (backgroundLayer) {
+        if (backgroundLayer.style.backgroundImage.includes(imgBackground)) {
+            return;
+        }
+
+        const tempLayer = document.createElement('div');
+        tempLayer.style.position = 'fixed';
+        tempLayer.style.top = '0';
+        tempLayer.style.left = '0';
+        tempLayer.style.width = '100vw';
+        tempLayer.style.height = '100vh';
+        tempLayer.style.zIndex = '-1';
+        tempLayer.style.backgroundSize = 'cover';
+        tempLayer.style.backgroundPosition = 'center';
+        tempLayer.style.opacity = '0';
+        tempLayer.style.transition = 'opacity 1s ease';
+        tempLayer.style.backgroundImage = `url(${imgBackground})`;
+        tempLayer.style.filter = 'blur(3px) brightness(0.5)';
+
+        document.body.appendChild(tempLayer);
+
+        requestAnimationFrame(() => {
+            tempLayer.style.opacity = '1'
+
+            tempLayer.addEventListener('transitionend', () => {
+                if (backgroundLayer) {
+                    backgroundLayer.remove();
+                }
+                backgroundLayer = tempLayer;
+                isAnimating = false;
+            });
+        });
+
+        isAnimating = true;
+    }
+};
 
 setInterval(() => {
     const imgElements = document.querySelectorAll('[class*="PlayerBarDesktop_cover__IYLwR"]');
@@ -10,73 +71,10 @@ setInterval(() => {
         }
     });
 
-    if (imgBackground && imgBackground !== currentImgBackground) {
-        const bodyElement = document.querySelector('body');
-
-        if (bodyElement) {
-            let backgroundLayer1 = document.querySelector('.dynamic-background-layer-1');
-            let backgroundLayer2 = document.querySelector('.dynamic-background-layer-2');
-
-            if (!backgroundLayer1) {
-                backgroundLayer1 = document.createElement('div');
-                backgroundLayer1.classList.add('dynamic-background-layer-1');
-                backgroundLayer1.classList.add('dynamic-background');
-                bodyElement.appendChild(backgroundLayer1);
-                backgroundLayer1.style.position = 'fixed';
-                backgroundLayer1.style.top = '0';
-                backgroundLayer1.style.left = '0';
-                backgroundLayer1.style.width = '100vw';
-                backgroundLayer1.style.height = '100vh';
-                backgroundLayer1.style.zIndex = '-2';
-                backgroundLayer1.style.backgroundSize = 'cover';
-                backgroundLayer1.style.backgroundPosition = 'center';
-                backgroundLayer1.style.transition = 'opacity 1s ease';
-                backgroundLayer1.style.opacity = '1';
-                backgroundLayer1.style.willChange = 'opacity, background-image';
-            }
-
-            if (!backgroundLayer2) {
-                backgroundLayer2 = document.createElement('div');
-                backgroundLayer2.classList.add('dynamic-background-layer-2');
-                backgroundLayer2.classList.add('dynamic-background');
-                bodyElement.appendChild(backgroundLayer2);
-                backgroundLayer2.style.position = 'fixed';
-                backgroundLayer2.style.top = '0';
-                backgroundLayer2.style.left = '0';
-                backgroundLayer2.style.width = '100vw';
-                backgroundLayer2.style.height = '100vh';
-                backgroundLayer2.style.zIndex = '-3';
-                backgroundLayer2.style.backgroundSize = 'cover';
-                backgroundLayer2.style.backgroundPosition = 'center';
-                backgroundLayer2.style.transition = 'opacity 1s ease';
-                backgroundLayer2.style.opacity = '0';
-                backgroundLayer2.style.willChange = 'opacity, background-image';
-            }
-
-            const img = new Image();
-            img.src = imgBackground;
-
-            img.onload = () => {
-                backgroundLayer2.style.backgroundImage = `url(${imgBackground})`;
-                backgroundLayer2.style.opacity = '1';
-
-                setTimeout(() => {
-                    backgroundLayer1.style.opacity = '0';
-                }, 500);
-
-                setTimeout(() => {
-                    backgroundLayer1.style.backgroundImage = backgroundLayer2.style.backgroundImage;
-                    backgroundLayer1.style.opacity = '1';
-                    backgroundLayer2.style.opacity = '0';
-                }, 1500);
-            };
-
-            img.onerror = () => {
-                console.error(`Ошибка загрузки изображения: ${imgBackground}`);
-            };
-
-            currentImgBackground = imgBackground;
-        }
+    if (imgBackground && imgBackground !== currentImgBackground && !isAnimating) {
+        initializeBackgroundLayer();
+        updateBackgroundImage(imgBackground);
+        currentImgBackground = imgBackground;
     }
 }, 1000);
 
@@ -131,3 +129,22 @@ function checkAndReplaceText() {
 }
 
 setInterval(checkAndReplaceText, 1000);
+
+// Скрытие фуллскрина без фуллскрина
+function checkAriaHidden() {
+    const ariaElement = document.querySelector('[aria-label="Включить текстомузыку Может нарушить доступность"]');
+    const l66GiFKS1Ux = document.querySelector('.l66GiFKS1Ux_BNd603Cu');
+    const fullscreenPlayerCloseButton = document.querySelector('[data-test-id="FULLSCREEN_PLAYER_CLOSE_BUTTON"]');
+
+    if (ariaElement && l66GiFKS1Ux && fullscreenPlayerCloseButton) {
+        if (ariaElement.getAttribute('aria-hidden') === 'true') {
+            l66GiFKS1Ux.style.display = 'none';
+            fullscreenPlayerCloseButton.style.display = 'none';
+        } else if (ariaElement.getAttribute('aria-hidden') === 'false') {
+            l66GiFKS1Ux.style.display = '';
+            fullscreenPlayerCloseButton.style.display = '';
+        }
+    }
+}
+
+setInterval(checkAriaHidden, 500);

@@ -60,10 +60,6 @@ section.PlayerBar_root__cXUnU {
 	border-color: #fff1;
 }
 
-.dynamic-background {
-	filter: blur(3px) brightness(0.5);
-}
-
 [data-test-id="FULLSCREEN_PLAYER_MODAL"] {
 	visibility: hidden;
 }
