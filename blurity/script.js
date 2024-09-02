@@ -125,7 +125,7 @@ function checkAndReplaceText() {
     if (element) {
         const currentText = element.textContent.trim();
         const targetText = 'Выбираем весёлое настроение в Моей волне! Какой повод? Мы снова справились со всеми багами — теперь ничто не помешает вам открывать новую музыку';
-        const replacementText = 'В этом обновлении Diramix в край ахуел и забил на тему YouTube а также на оптимизацию этой темы. Она выглядит хуёво и скорее всего не будет обновляться. Можете написать об ошибках в теме Дирамиксу и ему будет похуй!';
+        const replacementText = 'В этом обновлении Diramix\'у понравились хорошие отзывы. Тема будет обновляться и в ней будут исправляться баги!';
         if (currentText === targetText) {
             element.textContent = replacementText;
         }
