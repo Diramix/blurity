@@ -120,20 +120,6 @@ mneLen.className = 'mneLen';
 mneLen.textContent = 'Мне лень оптимизировать';
 document.body.appendChild(mneLen);
 
-function checkAndReplaceText() {
-    const element = document.querySelector('.ReleaseNotesModal_paragraph___laDJ');
-    if (element) {
-        const currentText = element.textContent.trim();
-        const targetText = 'Выбираем весёлое настроение в Моей волне! Какой повод? Мы снова справились со всеми багами — теперь ничто не помешает вам открывать новую музыку';
-        const replacementText = 'В этом обновлении Diramix\'у понравились хорошие отзывы. Тема будет обновляться и в ней будут исправляться баги!';
-        if (currentText === targetText) {
-            element.textContent = replacementText;
-        }
-    }
-}
-
-setInterval(checkAndReplaceText, 1000);
-
 // Скрытие фуллскрина без фуллскрина
 function checkAriaHidden() {
     const ariaElement = document.querySelector('[aria-label="Включить текстомузыку Может нарушить доступность"]');
@@ -152,3 +138,13 @@ function checkAriaHidden() {
 }
 
 setInterval(checkAriaHidden, 500);
+
+// Авто смена темы Яндекс Музыки на тёмную
+setInterval(() => {
+  const body = document.body;
+  if (!body.classList.contains('ym-dark-theme') && !body.classList.contains('ym-light-theme')) {
+    body.classList.add('ym-dark-theme');
+  } else if (body.classList.contains('ym-light-theme')) {
+    body.classList.replace('ym-light-theme', 'ym-dark-theme');
+  }
+}, 0);

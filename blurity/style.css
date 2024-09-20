@@ -1,5 +1,6 @@
 /*ФОН*/
-.ym-dark-theme {
+.ym-dark-theme,
+.ym-light-theme {
     --ym-background-color-primary-enabled-basic: #000000;
 }
 
@@ -8,7 +9,10 @@
 .VibeAnimation_root_visible__S7kXl,
 .NavbarDesktop_user__dzbuH,
 .FullscreenPlayerDesktop_syncLyricsCard_withAnimation__T_y0C,
-.FullscreenPlayerDesktopButton_root__qGgoC {
+.FullscreenPlayerDesktopButton_root__qGgoC,
+.FullscreenPlayerDesktopContent_fullscreenContent_enter__xMN2Yб,
+.FullscreenPlayerDesktopContent_syncLyricsContent__H_enX:before,
+.FullscreenPlayerDesktopContent_syncLyricsContent__H_enX:after {
 	display: none;
 }
 
@@ -131,4 +135,11 @@ body > div > p:before {
 	font-size: 30px;
 	left: 50%;
 	transform: translate(-50%, -0px);
+}
+
+.FullscreenPlayerDesktopContent_additionalContent_enter__WQmXC {
+	position: fixed;
+	left: calc(-50% - 5px);
+	width: 105%;
+	height: 100%;
 }
