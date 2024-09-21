@@ -36,7 +36,7 @@
 	border-color: #fff1;
 	height: calc(100% - 78px);
 	margin-top: 14px;
-	min-width: 80px;
+	min-width: 78px;
 	margin-left: 10px;
 }
 
@@ -82,6 +82,12 @@ section.PlayerBar_root__cXUnU {
 .QualitySettingsContextMenu_root_withNewQuality__jPTb8 {
 	backdrop-filter: blur(100px);
 	background: 0;
+}
+
+.QualitySettingsContextMenu_root_withEqualizer__GPjIg {
+	display: block;
+	height: 302px;
+	overflow: auto;
 }
 
 [data-test-id="MY_VIBE_PAUSE_BUTTON"] {
