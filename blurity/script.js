@@ -9,10 +9,10 @@ const initializeBackgroundLayer = () => {
         backgroundLayer.classList.add('dynamic-background-layer');
         document.body.appendChild(backgroundLayer);
         backgroundLayer.style.position = 'fixed';
-        backgroundLayer.style.top = '-10px'; // смещение на 10px за границу экрана сверху
-        backgroundLayer.style.left = '-10px'; // смещение на 10px за границу экрана слева
-        backgroundLayer.style.width = 'calc(100vw + 20px)'; // увеличение ширины на 20px (по 10px с каждой стороны)
-        backgroundLayer.style.height = 'calc(100vh + 20px)'; // увеличение высоты на 20px (по 10px с каждой стороны)
+        backgroundLayer.style.top = '-10px';
+        backgroundLayer.style.left = '-10px';
+        backgroundLayer.style.width = 'calc(100vw + 20px)';
+        backgroundLayer.style.height = 'calc(100vh + 20px)';
         backgroundLayer.style.zIndex = '-2';
         backgroundLayer.style.backgroundSize = 'cover';
         backgroundLayer.style.backgroundPosition = 'center';
@@ -31,10 +31,10 @@ const updateBackgroundImage = (imgBackground) => {
 
         const tempLayer = document.createElement('div');
         tempLayer.style.position = 'fixed';
-        tempLayer.style.top = '-10px'; // смещение на 10px за границу экрана сверху
-        tempLayer.style.left = '-10px'; // смещение на 10px за границу экрана слева
-        tempLayer.style.width = 'calc(100vw + 20px)'; // увеличение ширины на 20px
-        tempLayer.style.height = 'calc(100vh + 20px)'; // увеличение высоты на 20px
+        tempLayer.style.top = '-10px';
+        tempLayer.style.left = '-10px';
+        tempLayer.style.width = 'calc(100vw + 20px)';
+        tempLayer.style.height = 'calc(100vh + 20px)';
         tempLayer.style.zIndex = '-1';
         tempLayer.style.backgroundSize = 'cover';
         tempLayer.style.backgroundPosition = 'center';
@@ -148,3 +148,57 @@ setInterval(() => {
     body.classList.replace('ym-light-theme', 'ym-dark-theme');
   }
 }, 0);
+
+// Закрытие синк лирики на кнопку синк лирики
+setInterval(() => {
+    const closeButton = document.querySelector('.FullscreenPlayerDesktop_closeButton__MQ64s');
+    const overlayButton = document.querySelector('.openCloseButton');
+    const syncLyricsButton = document.querySelector('[aria-label="Включить текстомузыку Может нарушить доступность"]');
+
+    if (!closeButton || !syncLyricsButton) {
+        overlayButton?.remove();
+        return;
+    }
+
+    const isHidden = syncLyricsButton.getAttribute('aria-hidden') === 'true';
+    syncLyricsButton.classList.toggle('sync-lyrics-hidden', isHidden);
+    syncLyricsButton.classList.toggle('sync-lyrics-visible', !isHidden);
+
+    if (isHidden) {
+        overlayButton?.remove();
+    } else {
+        if (!overlayButton) {
+            const openCloseButton = document.createElement('button');
+            openCloseButton.className = 'openCloseButton';
+            Object.assign(openCloseButton.style, {
+                position: 'absolute',
+                top: `${syncLyricsButton.getBoundingClientRect().top}px`,
+                left: `${syncLyricsButton.getBoundingClientRect().left}px`,
+                width: `${syncLyricsButton.offsetWidth}px`,
+                height: `${syncLyricsButton.offsetHeight}px`,
+                zIndex: '9999',
+                opacity: '0',
+                cursor: 'pointer',
+            });
+            document.body.appendChild(openCloseButton);
+
+            openCloseButton.onclick = () => closeButton.click();
+            openCloseButton.onmouseenter = () => syncLyricsButton.classList.add('hovered');
+            openCloseButton.onmouseleave = () => syncLyricsButton.classList.remove('hovered');
+        } else {
+            Object.assign(overlayButton.style, {
+                top: `${syncLyricsButton.getBoundingClientRect().top}px`,
+                left: `${syncLyricsButton.getBoundingClientRect().left}px`,
+                width: `${syncLyricsButton.offsetWidth}px`,
+                height: `${syncLyricsButton.offsetHeight}px`,
+            });
+        }
+
+        syncLyricsButton.onmouseenter = () => {
+            if (!isHidden) syncLyricsButton.classList.add('hovered');
+        };
+        syncLyricsButton.onmouseleave = () => {
+            if (!isHidden) syncLyricsButton.classList.remove('hovered');
+        };
+    }
+}, 500);

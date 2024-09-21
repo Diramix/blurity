@@ -2,6 +2,7 @@
 .ym-dark-theme,
 .ym-light-theme {
     --ym-background-color-primary-enabled-basic: #000000;
+    --average-color-background: 0;
 }
 
 .NavbarDesktop_pinsList___jXIM:before,
@@ -145,7 +146,15 @@ body > div > p:before {
 
 .FullscreenPlayerDesktopContent_additionalContent_enter__WQmXC {
 	position: fixed;
-	left: calc(-50% - 5px);
+	left: -50%;
 	width: 105%;
 	height: 100%;
+}
+
+.FullscreenPlayerDesktop_closeButton__MQ64s {
+	visibility: hidden;
+}
+
+.DevPanel_panel__LnoO2 {
+	backdrop-filter: blur(1000px) brightness(0.8);
 }
