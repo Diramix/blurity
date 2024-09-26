@@ -13,7 +13,8 @@
 .FullscreenPlayerDesktopButton_root__qGgoC,
 .FullscreenPlayerDesktopContent_fullscreenContent_enter__xMN2Yб,
 .FullscreenPlayerDesktopContent_syncLyricsContent__H_enX:before,
-.FullscreenPlayerDesktopContent_syncLyricsContent__H_enX:after {
+.FullscreenPlayerDesktopContent_syncLyricsContent__H_enX:after,
+.QualitySettingsModal_overlay__8pjOO {
 	display: none;
 }
 
@@ -57,7 +58,8 @@ section.PlayerBar_root__cXUnU {
 }
 
 .Content_main__8_wIa,
-.PlayerBar_root__cXUnU {
+.PlayerBar_root__cXUnU,
+.ReleaseNotesModal_root__RSw1p {
 	backdrop-filter: blur(70px) brightness(1.5);
 	background: 0;
 	border-radius: 20px;
@@ -80,9 +82,9 @@ section.PlayerBar_root__cXUnU {
 	visibility: visible;
 }
 
-.QualitySettingsContextMenu_root_withNewQuality__jPTb8 {
-	backdrop-filter: blur(100px);
+.QualitySettingsModal_root__f3gE2 {
 	background: 0;
+	backdrop-filter: brightness(0.2);
 }
 
 .QualitySettingsContextMenu_root_withEqualizer__GPjIg {
@@ -157,4 +159,8 @@ body > div > p:before {
 
 .DevPanel_panel__LnoO2 {
 	backdrop-filter: blur(1000px) brightness(0.8);
+}
+
+.ggP7WX2_erziDHFOo32s {
+	background: #f000;
 }
