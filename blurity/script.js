@@ -1,4 +1,5 @@
 // Фоновая картинка
+/*--------------------------------------------*/
 let currentImgBackground = "";
 let isAnimating = false;
 let backgroundLayer = null;
@@ -81,8 +82,10 @@ setInterval(() => {
         currentImgBackground = imgBackground;
     }
 }, 1000);
+/*--------------------------------------------*/
 
 // Отключение тупого даблклика
+/*--------------------------------------------*/
 function disableDoubleClick() {
     const elements = document.querySelectorAll('.PlayerBar_root__cXUnU');
 
@@ -114,32 +117,42 @@ function checkHeight() {
 }
 
 setInterval(checkHeight, 100);
+/*--------------------------------------------*/
 
+// Кастом mneLen
+/*--------------------------------------------*/
 var mneLen = document.createElement('div');
 mneLen.className = 'mneLen';
 mneLen.textContent = 'Мне лень оптимизировать';
 document.body.appendChild(mneLen);
+/*--------------------------------------------*/
 
 // Скрытие фуллскрина без фуллскрина
+/*--------------------------------------------*/
 function checkAriaHidden() {
     const ariaElement = document.querySelector('[aria-label="Включить текстомузыку Может нарушить доступность"]');
+    const playerModal = document.querySelector('[data-test-id="FULLSCREEN_PLAYER_MODAL"]');
     const l66GiFKS1Ux = document.querySelector('.l66GiFKS1Ux_BNd603Cu');
     const fullscreenPlayerCloseButton = document.querySelector('[data-test-id="FULLSCREEN_PLAYER_CLOSE_BUTTON"]');
 
     if (ariaElement && l66GiFKS1Ux && fullscreenPlayerCloseButton) {
         if (ariaElement.getAttribute('aria-hidden') === 'true') {
             l66GiFKS1Ux.style.display = 'none';
+            playerModal.style.display = 'none';
             fullscreenPlayerCloseButton.style.display = 'none';
         } else if (ariaElement.getAttribute('aria-hidden') === 'false') {
             l66GiFKS1Ux.style.display = '';
+            playerModal.style.display = '';
             fullscreenPlayerCloseButton.style.display = '';
         }
     }
 }
 
 setInterval(checkAriaHidden, 500);
+/*--------------------------------------------*/
 
 // Авто смена темы Яндекс Музыки на тёмную
+/*--------------------------------------------*/
 setInterval(() => {
   const body = document.body;
   if (!body.classList.contains('ym-dark-theme') && !body.classList.contains('ym-light-theme')) {
@@ -148,8 +161,10 @@ setInterval(() => {
     body.classList.replace('ym-light-theme', 'ym-dark-theme');
   }
 }, 0);
+/*--------------------------------------------*/
 
 // Закрытие синк лирики на кнопку синк лирики
+/*--------------------------------------------*/
 setInterval(() => {
     const closeButton = document.querySelector('.FullscreenPlayerDesktop_closeButton__MQ64s');
     const overlayButton = document.querySelector('.openCloseButton');
@@ -202,3 +217,4 @@ setInterval(() => {
         };
     }
 }, 500);
+/*--------------------------------------------*/
