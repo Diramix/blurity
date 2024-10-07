@@ -1,7 +1,8 @@
 /*ФОН*/
 /*--------------------------------------------*/
 .ym-dark-theme,
-.ym-light-theme {
+.ym-light-theme,
+.ym-font-music {
     --ym-background-color-primary-enabled-basic: #000;
     --average-color-background: 0;
 }
@@ -34,7 +35,7 @@ section.PlayerBar_root__cXUnU {
 	right: 0;
 	left: 0;
 	bottom: 0;
-	border-radius: 0;
+	border-radius: 10px 10px 0px 0px;
 	border-width: 3px 0px 0px 0px;
 	z-index: 401;
 }
@@ -45,7 +46,8 @@ section.PlayerBar_root__cXUnU {
 
 .Content_main__8_wIa,
 .PlayerBar_root__cXUnU,
-.ReleaseNotesModal_root__RSw1p {
+.ReleaseNotesModal_root__RSw1p,
+.Donation_root__nwHCN {
 	backdrop-filter: blur(70px) brightness(1.5);
 	background: 0;
 	border-radius: 20px;
@@ -151,10 +153,6 @@ body > div > p:before {
 	height: 100%;
 }
 
-.FullscreenPlayerDesktop_closeButton__MQ64s {
-	visibility: hidden;
-}
-
 .FullscreenPlayerDesktop_root___8vo1.FullscreenPlayerDesktop_important__dGfiL {
 	background: 0;
 }
@@ -171,13 +169,23 @@ body > div > p:before {
 }
 /*--------------------------------------------*/
 
+/*Слайдеры громкости*/
+/*--------------------------------------------*/
+.ChangeVolume_root__HDxtA {
+	--slider-thumb-box-shadow-color: #0000;
+}
+
+.ChangeTimecode_slider__P4qmT {
+	--slider-thumb-box-shadow-color: #0000;
+}
+/*--------------------------------------------*/
+
 /*Only display: none;*/
 /*--------------------------------------------*/
 .NavbarDesktop_pinsList___jXIM:before,
 .NavbarDesktop_pinsList___jXIM:after,
 .VibeAnimation_root_visible__S7kXl,
 .NavbarDesktop_user__dzbuH,
-.FullscreenPlayerDesktopButton_root__qGgoC,
 .FullscreenPlayerDesktopContent_fullscreenContent_enter__xMN2Yб,
 .FullscreenPlayerDesktopContent_syncLyricsContent__H_enX:before,
 .FullscreenPlayerDesktopContent_syncLyricsContent__H_enX:after,

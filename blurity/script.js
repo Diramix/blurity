@@ -61,7 +61,7 @@ const updateBackgroundImage = (imgBackground) => {
                 });
             });
 
-            isAnimating = true;
+            isAnimating = false; // Использовалось раньше для того, чтобы анимация не ломалась. Сейчас рекомендуется держать на false
         };
     }
 };
@@ -127,30 +127,6 @@ mneLen.textContent = 'Мне лень оптимизировать';
 document.body.appendChild(mneLen);
 /*--------------------------------------------*/
 
-// Скрытие фуллскрина без фуллскрина
-/*--------------------------------------------*/
-function checkAriaHidden() {
-    const ariaElement = document.querySelector('[aria-label="Включить текстомузыку Может нарушить доступность"]');
-    const playerModal = document.querySelector('[data-test-id="FULLSCREEN_PLAYER_MODAL"]');
-    const l66GiFKS1Ux = document.querySelector('.l66GiFKS1Ux_BNd603Cu');
-    const fullscreenPlayerCloseButton = document.querySelector('[data-test-id="FULLSCREEN_PLAYER_CLOSE_BUTTON"]');
-
-    if (ariaElement && l66GiFKS1Ux && fullscreenPlayerCloseButton) {
-        if (ariaElement.getAttribute('aria-hidden') === 'true') {
-            l66GiFKS1Ux.style.display = 'none';
-            playerModal.style.display = 'none';
-            fullscreenPlayerCloseButton.style.display = 'none';
-        } else if (ariaElement.getAttribute('aria-hidden') === 'false') {
-            l66GiFKS1Ux.style.display = '';
-            playerModal.style.display = '';
-            fullscreenPlayerCloseButton.style.display = '';
-        }
-    }
-}
-
-setInterval(checkAriaHidden, 500);
-/*--------------------------------------------*/
-
 // Авто смена темы Яндекс Музыки на тёмную
 /*--------------------------------------------*/
 setInterval(() => {
@@ -161,60 +137,4 @@ setInterval(() => {
     body.classList.replace('ym-light-theme', 'ym-dark-theme');
   }
 }, 0);
-/*--------------------------------------------*/
-
-// Закрытие синк лирики на кнопку синк лирики
-/*--------------------------------------------*/
-setInterval(() => {
-    const closeButton = document.querySelector('.FullscreenPlayerDesktop_closeButton__MQ64s');
-    const overlayButton = document.querySelector('.openCloseButton');
-    const syncLyricsButton = document.querySelector('[aria-label="Включить текстомузыку Может нарушить доступность"]');
-
-    if (!closeButton || !syncLyricsButton) {
-        overlayButton?.remove();
-        return;
-    }
-
-    const isHidden = syncLyricsButton.getAttribute('aria-hidden') === 'true';
-    syncLyricsButton.classList.toggle('sync-lyrics-hidden', isHidden);
-    syncLyricsButton.classList.toggle('sync-lyrics-visible', !isHidden);
-
-    if (isHidden) {
-        overlayButton?.remove();
-    } else {
-        if (!overlayButton) {
-            const openCloseButton = document.createElement('button');
-            openCloseButton.className = 'openCloseButton';
-            Object.assign(openCloseButton.style, {
-                position: 'absolute',
-                top: `${syncLyricsButton.getBoundingClientRect().top}px`,
-                left: `${syncLyricsButton.getBoundingClientRect().left}px`,
-                width: `${syncLyricsButton.offsetWidth}px`,
-                height: `${syncLyricsButton.offsetHeight}px`,
-                zIndex: '9999',
-                opacity: '0',
-                cursor: 'pointer',
-            });
-            document.body.appendChild(openCloseButton);
-
-            openCloseButton.onclick = () => closeButton.click();
-            openCloseButton.onmouseenter = () => syncLyricsButton.classList.add('hovered');
-            openCloseButton.onmouseleave = () => syncLyricsButton.classList.remove('hovered');
-        } else {
-            Object.assign(overlayButton.style, {
-                top: `${syncLyricsButton.getBoundingClientRect().top}px`,
-                left: `${syncLyricsButton.getBoundingClientRect().left}px`,
-                width: `${syncLyricsButton.offsetWidth}px`,
-                height: `${syncLyricsButton.offsetHeight}px`,
-            });
-        }
-
-        syncLyricsButton.onmouseenter = () => {
-            if (!isHidden) syncLyricsButton.classList.add('hovered');
-        };
-        syncLyricsButton.onmouseleave = () => {
-            if (!isHidden) syncLyricsButton.classList.remove('hovered');
-        };
-    }
-}, 500);
 /*--------------------------------------------*/
