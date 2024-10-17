@@ -138,3 +138,35 @@ setInterval(() => {
   }
 }, 0);
 /*--------------------------------------------*/
+
+// МЕНЯЙТЕ ЦВЕТ!!!
+/*--------------------------------------------*/
+const css = `
+:root {
+    --background-color: #000;
+}
+
+.TrackLyricsModal_root__KsVRf,
+.QualitySettingsModal_root__f3gE2,
+.QualitySettingsContextMenu_root_withEqualizer__GPjIg {
+    background-color: var(--background-color);
+}
+`;
+
+const style = document.createElement('style');
+style.appendChild(document.createTextNode(css));
+document.head.appendChild(style);
+
+function applyBackgroundColor() {
+    const elementWithColor = document.querySelector("[style*='--player-average-color-background']");
+
+    if (elementWithColor) {
+        const backgroundColor = getComputedStyle(elementWithColor).getPropertyValue('--player-average-color-background');
+        document.documentElement.style.setProperty('--background-color', backgroundColor);
+    }
+
+    setTimeout(applyBackgroundColor, 1000);
+}
+
+applyBackgroundColor();
+/*--------------------------------------------*/

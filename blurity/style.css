@@ -58,17 +58,6 @@ section.PlayerBar_root__cXUnU {
 
 /*Качество звука*/
 /*--------------------------------------------*/
-.QualitySettingsModal_root__f3gE2 {
-	background: 0;
-	backdrop-filter: brightness(0.2);
-}
-
-.QualitySettingsContextMenu_root_withEqualizer__GPjIg {
-	display: block;
-	height: 302px;
-	overflow: auto;
-}
-
 .EqualizerPresets_container__ABVY8 {
 	background: 0;
 }
@@ -99,10 +88,14 @@ section.PlayerBar_root__cXUnU {
 
 /*Контекстное меню*/
 /*--------------------------------------------*/
+.NOqNiasunvfLvvi75zl9 {
+	z-index: 500;
+}
+
 .s7_MO4NdsYs7nPQALD8W {
+	position: fixed;
 	background: 0;
 	backdrop-filter: blur(60px);
-	bottom: calc(100% - 299px);
 }
 /*--------------------------------------------*/
 
@@ -177,6 +170,17 @@ body > div > p:before {
 
 .ChangeTimecode_slider__P4qmT {
 	--slider-thumb-box-shadow-color: #0000;
+}
+/*--------------------------------------------*/
+
+/*Track Lyrics*/
+/*--------------------------------------------*/
+.TrackLyricsModal_content__Cstzi {
+	color: #fff;
+}
+
+.TrackLyricsModal_header__nWar3 {
+	color: #fff;
 }
 /*--------------------------------------------*/
 
