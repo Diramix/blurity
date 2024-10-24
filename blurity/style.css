@@ -23,7 +23,7 @@
 	border-width: 3px;
 	border-style: solid;
 	border-color: #fff1;
-	height: calc(100% - 78px);
+	height: calc(100% - 99px);
 	margin-top: 14px;
 	min-width: 78px;
 	margin-left: 10px;
@@ -60,6 +60,10 @@ section.PlayerBar_root__cXUnU {
 /*--------------------------------------------*/
 .EqualizerPresets_container__ABVY8 {
 	background: 0;
+}
+
+.QualitySettingsModal_root__f3gE2 {
+	margin-bottom: 85px;
 }
 /*--------------------------------------------*/
 
@@ -195,7 +199,8 @@ body > div > p:before {
 .FullscreenPlayerDesktopContent_syncLyricsContent__H_enX:after,
 .QualitySettingsModal_overlay__8pjOO,
 .FullscreenPlayerDesktopContent_sliderContainer__FtBZ7,
-.FullscreenPlayerDesktopControls_root__tviu4 {
+.FullscreenPlayerDesktopControls_root__tviu4,
+.NavbarDesktopUserWidget_authorizedUserProfile__2wAqI {
 	display: none;
 }
 /*--------------------------------------------*/
