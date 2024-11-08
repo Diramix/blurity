@@ -4,7 +4,7 @@
   "banner": "banner.png",
   "author": "Diramix",
   "description": "Ставит картинку альбома на фон и размывает все элементы!",
-  "version": "1.4.4",
+  "version": "1.4.5",
   "css": "style.css",
   "script": "script.js",
   "tags": ["Blur", "Colored"]
