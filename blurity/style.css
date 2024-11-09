@@ -201,7 +201,9 @@ body > div > p:before {
 .FullscreenPlayerDesktopContent_sliderContainer__FtBZ7,
 .FullscreenPlayerDesktopControls_root__tviu4,
 .NavbarDesktopUserWidget_userProfileContainer__ha3Tm,
-.BarBelow_root__KFexT {
+.BarBelow_root__KFexT,
+.FullscreenPlayerDesktopContent_syncLyricsContent__H_enX:before,
+.FullscreenPlayerDesktopContent_syncLyricsContent__H_enX:after {
 	display: none;
 }
 /*--------------------------------------------*/
