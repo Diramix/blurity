@@ -148,7 +148,9 @@ const css = `
 
 .TrackLyricsModal_root__KsVRf,
 .QualitySettingsModal_root__f3gE2,
-.QualitySettingsContextMenu_root_withEqualizer__GPjIg {
+.QualitySettingsContextMenu_root_withEqualizer__GPjIg,
+.TrailerModal_modalContent__ZSNFe,
+.TrackAboutModalDesktop_root_withWindows__jIOiB {
     background-color: var(--background-color);
 }
 `;

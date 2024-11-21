@@ -56,6 +56,30 @@ section.PlayerBar_root__cXUnU {
 }
 /*--------------------------------------------*/
 
+/*ТАБЫ - TABS*/
+/*--------------------------------------------*/
+.PlaylistFiltersTabs_filter_selected__H3ALi,
+.SearchPage_filter__5xzTL,
+.MusicHistoryPage_tab_selected__nmn8P {
+	background: #fff2;
+	border-width: 0;
+}
+
+.PlaylistFiltersTabs_filter__6P4TS[aria-selected="false"],
+.SearchPage_filter__5xzTL[aria-selected="false"],
+.MusicHistoryPage_tab_selected__nmn8P[aria-selected="false"] {
+	background: 0;
+	border-width: 0;
+}
+/*--------------------------------------------*/
+
+/*История - History*/
+/*--------------------------------------------*/
+.MusicHistoryPage_header__dzEvD {
+	background: 0;
+}
+/*--------------------------------------------*/
+
 /*Качество звука*/
 /*--------------------------------------------*/
 .EqualizerPresets_container__ABVY8 {
@@ -203,7 +227,9 @@ body > div > p:before {
 .NavbarDesktopUserWidget_userProfileContainer__ha3Tm,
 .BarBelow_root__KFexT,
 .FullscreenPlayerDesktopContent_syncLyricsContent__H_enX:before,
-.FullscreenPlayerDesktopContent_syncLyricsContent__H_enX:after {
+.FullscreenPlayerDesktopContent_syncLyricsContent__H_enX:after,
+.PlayQueue_root__ponhw:before,
+.PlayQueue_root__ponhw:after {
 	display: none;
 }
 /*--------------------------------------------*/
