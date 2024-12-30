@@ -72,7 +72,7 @@ setInterval(() => {
 
     imgElements.forEach(img => {
         if (img.src && img.src.includes('/100x100')) {
-            imgBackground = img.src.replace('/1000x1000', '/1000x1000');
+            imgBackground = img.src.replace('/100x100', '/1000x1000');
         }
     });
 
