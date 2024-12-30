@@ -5,6 +5,7 @@
 .ym-font-music {
     --ym-background-color-primary-enabled-basic: #000;
     --average-color-background: 0;
+    --ym-background-color-primary-enabled-content: 0;
 }
 /*--------------------------------------------*/
 
@@ -58,16 +59,12 @@ section.PlayerBar_root__cXUnU {
 
 /*ТАБЫ - TABS*/
 /*--------------------------------------------*/
-.PlaylistFiltersTabs_filter_selected__H3ALi,
-.SearchPage_filter__5xzTL,
-.MusicHistoryPage_tab_selected__nmn8P {
+[data-test-id="TAB"] {
 	background: #fff2;
 	border-width: 0;
 }
 
-.PlaylistFiltersTabs_filter__6P4TS[aria-selected="false"],
-.SearchPage_filter__5xzTL[aria-selected="false"],
-.MusicHistoryPage_tab_selected__nmn8P[aria-selected="false"] {
+[data-test-id="TAB"][aria-selected="false"] {
 	background: 0;
 	border-width: 0;
 }
@@ -209,6 +206,13 @@ body > div > p:before {
 
 .TrackLyricsModal_header__nWar3 {
 	color: #fff;
+}
+/*--------------------------------------------*/
+
+/*Описание*/
+/*--------------------------------------------*/
+[data-test-id="BLOCK_HEADER_DESCRIPTION"] {
+	color: #fff8;
 }
 /*--------------------------------------------*/
 
