@@ -55,6 +55,10 @@ section.PlayerBar_root__cXUnU {
 	border-width: 3px;
 	border-color: #fff1;
 }
+
+.NavbarDesktopUserWidget_userProfileContainer__ha3Tm {
+	height: 45px;
+}
 /*--------------------------------------------*/
 
 /*ТАБЫ - TABS*/
@@ -85,6 +89,10 @@ section.PlayerBar_root__cXUnU {
 
 .QualitySettingsModal_root__f3gE2 {
 	margin-bottom: 85px;
+}
+
+[data-test-id="QUALITY_SETTINGS_CONTEXT_MENU"] {
+	z-index: 402;
 }
 /*--------------------------------------------*/
 
@@ -126,12 +134,13 @@ section.PlayerBar_root__cXUnU {
 
 /*blurity*/
 /*--------------------------------------------*/
-body > div > p {
+/* body > div > p {
 	visibility: hidden;
 }
+*/
 
-body > div > p:before {
-	content: "blurity";
+body > div > p {
+
 	position: fixed;
 	color: #fff;
 	left: 50%;
@@ -147,20 +156,6 @@ body > div > p:before {
 .CompositeHeader_stickyChild_scrolling__wm9_D {
 	background: #272727;
 }
-
-/*Кастом mneLen*/
-/*--------------------------------------------*/
-.mneLen {
-	position: fixed;
-	color: #fff;
-	bottom: 18%;
-	width: 433px;
-	font-weight: 1000;
-	font-size: 30px;
-	left: 50%;
-	transform: translate(-50%, -0px);
-}
-/*--------------------------------------------*/
 
 /*Полноэкранный плеер*/
 /*--------------------------------------------*/
@@ -228,7 +223,7 @@ body > div > p:before {
 .QualitySettingsModal_overlay__8pjOO,
 .FullscreenPlayerDesktopContent_sliderContainer__FtBZ7,
 .FullscreenPlayerDesktopControls_root__tviu4,
-.NavbarDesktopUserWidget_userProfileContainer__ha3Tm,
+.UserProfile_plusLink__NhVsU,
 .BarBelow_root__KFexT,
 .FullscreenPlayerDesktopContent_syncLyricsContent__H_enX:before,
 .FullscreenPlayerDesktopContent_syncLyricsContent__H_enX:after,

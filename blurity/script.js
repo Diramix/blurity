@@ -98,33 +98,6 @@ function disableDoubleClick() {
 }
 
 setInterval(disableDoubleClick, 1000);
-
-function checkHeight() {
-    const contentElement = document.querySelector('.DefaultLayout_content__md70Z');
-    const mneLenElement = document.querySelector('.mneLen');
-
-    if (contentElement && mneLenElement) {
-        const currentHeight = contentElement.clientHeight;
-        const windowHeight = window.innerHeight;
-        const thresholdHeight = windowHeight * 0.8;
-
-        if (currentHeight < thresholdHeight) {
-            mneLenElement.style.display = 'block';
-        } else {
-            mneLenElement.style.display = 'none';
-        }
-    }
-}
-
-setInterval(checkHeight, 100);
-/*--------------------------------------------*/
-
-// Кастом mneLen
-/*--------------------------------------------*/
-var mneLen = document.createElement('div');
-mneLen.className = 'mneLen';
-mneLen.textContent = 'Мне лень оптимизировать';
-document.body.appendChild(mneLen);
 /*--------------------------------------------*/
 
 // Авто смена темы Яндекс Музыки на тёмную
@@ -171,4 +144,77 @@ function applyBackgroundColor() {
 }
 
 applyBackgroundColor();
+/*--------------------------------------------*/
+
+/*Управление handleEvents.json*/
+/*--------------------------------------------*/
+let settings = {};
+
+function log(text) {
+    console.log('[Customizable LOG]: ', text)
+}
+
+async function getSettings() {
+    try {
+        const response = await fetch("http://127.0.0.1:2007/get_handle");
+        if (!response.ok) throw new Error(`Ошибка сети: ${response.status}`);
+        const data = await response.json();
+        if (!data?.data?.sections) {
+            console.warn("Структура данных не соответствует ожидаемой.");
+            return {};
+        }
+        return Object.fromEntries(data.data.sections.map(({ title, items }) => [
+            title,
+            Object.fromEntries(items.map(item => [
+                item.id,
+                item.bool ?? item.input ?? Object.fromEntries(item.buttons?.map(b => [b.name, b.text]) || [])
+            ]))
+        ]));
+    } catch (error) {
+        console.error("Ошибка при получении данных:", error);
+        return {};
+    }
+}
+
+let settingDelay = 1000;
+let updateInterval;
+
+async function setSettings(newSettings) {
+    // Включение/отключение navbarUserProfile
+    const navbarUserProfile = document.querySelector('.NavbarDesktopUserWidget_userProfileContainer__ha3Tm');
+    if (Object.keys(settings).length === 0 || settings['Навбар'].navbarUserProfileToggle !== newSettings['Навбар'].navbarUserProfileToggle) {
+        navbarUserProfile.style.display = newSettings['Навбар'].navbarUserProfileToggle ? 'block' : 'none';
+    }
+
+    // Текст сверху
+    const themeTitleTextElement = document.querySelector('body > div.PSBpanel > p');
+    if (Object.keys(settings).length === 0 || settings['Текст'].themeTitleText.text !== newSettings['Текст'].themeTitleText.text) {
+        themeTitleTextElement.textContent = newSettings['Текст'].themeTitleText.text || 'blurity';
+    }
+
+    // Update theme settings delay
+    if (Object.keys(settings).length === 0 || settings['Особое'].setInterval.text !== newSettings['Особое'].setInterval.text) {
+        const newDelay = parseInt(newSettings['Особое'].setInterval.text, 10) || 1000;
+        if (settingDelay !== newDelay) {
+            settingDelay = newDelay;
+
+            // Обновление интервала
+            clearInterval(updateInterval);
+            updateInterval = setInterval(update, settingDelay);
+        }
+    }
+}
+
+async function update() {
+    const newSettings = await getSettings();
+    await setSettings(newSettings);
+    settings = newSettings;
+}
+
+function init() {
+    update();
+    updateInterval = setInterval(update, settingDelay);
+}
+
+init();
 /*--------------------------------------------*/

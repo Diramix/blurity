@@ -1,0 +1,53 @@
+{
+  "sections": [
+    {
+      "title": "Навбар",
+      "items": [
+        {
+          "id": "navbarUserProfileToggle",
+          "name": "Профиль в навбаре",
+          "description": "[BUG] Включает/отключает отображение профиля в меню с закреплёнными элементами.",
+          "type": "button",
+          "bool": false,
+          "defaultParameter": false
+        }
+      ]
+    },
+    {
+      "title": "Текст",
+      "items": [
+        {
+          "id": "themeTitleText",
+          "name": "Theme Title Text",
+          "description": "Надпись сверху.",
+          "type": "text",
+          "buttons": [
+            {
+              "name": "text",
+              "text": "blurity",
+              "defaultParameter": "blurity"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Особое",
+      "items": [
+        {
+          "id": "setInterval",
+          "name": "Скорость обновления настроек темы (в миллисекундах)",
+          "description": "Выставляет скорость обновления настроек темы. (Задержка нажатия на кнопку в PulseSync и срабатывание в Яндекс Музыке)",
+          "type": "text",
+          "buttons": [
+            {
+              "name": "text",
+              "text": "1000",
+              "defaultParameter": "1000"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
