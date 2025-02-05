@@ -1,19 +1,6 @@
 {
   "sections": [
     {
-      "title": "Навбар",
-      "items": [
-        {
-          "id": "navbarUserProfileToggle",
-          "name": "Профиль в навбаре",
-          "description": "[BUG] Включает/отключает отображение профиля в меню с закреплёнными элементами.",
-          "type": "button",
-          "bool": false,
-          "defaultParameter": false
-        }
-      ]
-    },
-    {
       "title": "Текст",
       "items": [
         {

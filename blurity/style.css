@@ -228,7 +228,8 @@ body > div > p {
 .FullscreenPlayerDesktopContent_syncLyricsContent__H_enX:before,
 .FullscreenPlayerDesktopContent_syncLyricsContent__H_enX:after,
 .PlayQueue_root__ponhw:before,
-.PlayQueue_root__ponhw:after {
+.PlayQueue_root__ponhw:after,
+.NavbarDesktopUserWidget_userProfileContainer__ha3Tm {
 	display: none;
 }
 /*--------------------------------------------*/

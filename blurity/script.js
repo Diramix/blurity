@@ -176,16 +176,10 @@ async function getSettings() {
     }
 }
 
-let settingDelay = 1000;
+let settingsDelay = 1000;
 let updateInterval;
 
 async function setSettings(newSettings) {
-    // Включение/отключение navbarUserProfile
-    const navbarUserProfile = document.querySelector('.NavbarDesktopUserWidget_userProfileContainer__ha3Tm');
-    if (Object.keys(settings).length === 0 || settings['Навбар'].navbarUserProfileToggle !== newSettings['Навбар'].navbarUserProfileToggle) {
-        navbarUserProfile.style.display = newSettings['Навбар'].navbarUserProfileToggle ? 'block' : 'none';
-    }
-
     // Текст сверху
     const themeTitleTextElement = document.querySelector('body > div.PSBpanel > p');
     if (Object.keys(settings).length === 0 || settings['Текст'].themeTitleText.text !== newSettings['Текст'].themeTitleText.text) {
@@ -195,12 +189,12 @@ async function setSettings(newSettings) {
     // Update theme settings delay
     if (Object.keys(settings).length === 0 || settings['Особое'].setInterval.text !== newSettings['Особое'].setInterval.text) {
         const newDelay = parseInt(newSettings['Особое'].setInterval.text, 10) || 1000;
-        if (settingDelay !== newDelay) {
-            settingDelay = newDelay;
+        if (settingsDelay !== newDelay) {
+            settingsDelay = newDelay;
 
             // Обновление интервала
             clearInterval(updateInterval);
-            updateInterval = setInterval(update, settingDelay);
+            updateInterval = setInterval(update, settingsDelay);
         }
     }
 }
@@ -213,7 +207,7 @@ async function update() {
 
 function init() {
     update();
-    updateInterval = setInterval(update, settingDelay);
+    updateInterval = setInterval(update, settingsDelay);
 }
 
 init();
