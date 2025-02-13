@@ -35,6 +35,73 @@
           ]
         }
       ]
+    },
+    {
+      "title": "Developer",
+      "items": [
+        {
+          "id": "devAutoPlayOnStart",
+          "name": "Автоплей",
+          "description": "Запускает трек сразу после запуска Яндекс Музыки и при нажатии ctrl + r.",
+          "type": "button",
+          "bool": false,
+          "defaultParameter": false
+        }
+      ]
+    },
+    {
+      "title": "Open-Blocker",
+      "items": [
+        {
+          "id": "OBdonations",
+          "name": "Донаты",
+          "type": "button",
+          "bool": true,
+          "defaultParameter": true
+        },
+        {
+          "id": "OBconcerts",
+          "name": "Концерты",
+          "type": "button",
+          "bool": true,
+          "defaultParameter": true
+        },
+        {
+          "id": "OBuserprofile",
+          "name": "Профиль [BUG]",
+          "type": "button",
+          "bool": false,
+          "defaultParameter": false
+        },
+        {
+          "id": "OBtrailers",
+          "name": "Трейлеры",
+          "type": "button",
+          "bool": true,
+          "defaultParameter": true
+        },
+        {
+          "id": "OBbetabutton",
+          "name": "Кнопка версии",
+          "type": "button",
+          "bool": true,
+          "defaultParameter": true
+        },
+        {
+          "id": "OBrelevantnow",
+          "name": "Актуально сейчас",
+          "type": "button",
+          "bool": true,
+          "defaultParameter": true
+        },
+        {
+          "id": "OBartistrecommends",
+          "name": "Артист рекомендует",
+          "type": "button",
+          "bool": true,
+          "defaultParameter": true
+        }
+      ]
     }
   ]
 }

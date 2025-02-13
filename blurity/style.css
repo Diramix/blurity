@@ -59,6 +59,10 @@ section.PlayerBar_root__cXUnU {
 .NavbarDesktopUserWidget_userProfileContainer__ha3Tm {
 	height: 45px;
 }
+
+.UserProfile_root__vFuOj {
+	margin-bottom: 10px;
+}
 /*--------------------------------------------*/
 
 /*ТАБЫ - TABS*/
@@ -223,13 +227,11 @@ body > div > p {
 .QualitySettingsModal_overlay__8pjOO,
 .FullscreenPlayerDesktopContent_sliderContainer__FtBZ7,
 .FullscreenPlayerDesktopControls_root__tviu4,
-.UserProfile_plusLink__NhVsU,
 .BarBelow_root__KFexT,
 .FullscreenPlayerDesktopContent_syncLyricsContent__H_enX:before,
 .FullscreenPlayerDesktopContent_syncLyricsContent__H_enX:after,
 .PlayQueue_root__ponhw:before,
-.PlayQueue_root__ponhw:after,
-.NavbarDesktopUserWidget_userProfileContainer__ha3Tm {
+.PlayQueue_root__ponhw:after {
 	display: none;
 }
 /*--------------------------------------------*/
