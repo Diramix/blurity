@@ -156,7 +156,7 @@ function log(text) {
 
 async function getSettings() {
     try {
-        const response = await fetch("http://127.0.0.1:2007/get_handle");
+        const response = await fetch("http://localhost:2007/get_handle?name=blurity");
         if (!response.ok) throw new Error(`Ошибка сети: ${response.status}`);
         const data = await response.json();
         if (!data?.data?.sections) {
@@ -185,6 +185,42 @@ async function setSettings(newSettings) {
     if (Object.keys(settings).length === 0 || settings['Текст'].themeTitleText.text !== newSettings['Текст'].themeTitleText.text) {
         themeTitleTextElement.textContent = newSettings['Текст'].themeTitleText.text || 'blurity';
     }
+
+    // globalPlayerColor
+    const playerBarElement = document.querySelector('section.PlayerBar_root__cXUnU');
+    let globalPlayerColor = '';
+    
+    if (playerBarElement) {
+        globalPlayerColor = playerBarElement.style.getPropertyValue('--player-average-color-background').trim();
+    }
+
+    // Комбинированный стиль
+    let combinedStyle = document.getElementById('combined-style');
+    if (!combinedStyle) {
+        combinedStyle = document.createElement('style');
+        combinedStyle.id = 'combined-style';
+        document.head.appendChild(combinedStyle);
+    }
+    
+    combinedStyle.textContent = `
+        /*Фуллвайб*/
+        .VibeBlock_root__z7LtR {
+            min-height: ${newSettings['Vibe-Block'].toggleFullscreenVibeBlock ? '79.8vh' : '400px'} !important;
+            max-height: ${newSettings['Vibe-Block'].toggleFullscreenVibeBlock ? '79.8vh' : '400px'} !important;
+        }
+        @media (min-width: 1079px) {
+            .VibeBlock_root__z7LtR {
+                min-height: ${newSettings['Vibe-Block'].toggleFullscreenVibeBlock ? '84.2vh' : '400px'} !important;
+                max-height: ${newSettings['Vibe-Block'].toggleFullscreenVibeBlock ? '84.2vh' : '400px'} !important;
+            }
+        }
+
+        /*Транслого*/
+        .NavbarDesktop_logo__Z4jGx * {
+            color: ${newSettings['Logo'].toggleVariableNextLogoColor ? globalPlayerColor : ''} !important;
+            filter: brightness(${newSettings['Logo'].toggleVariableNextLogoColor ? '1.4' : '1.0'}) !important;
+        }
+    `;
 
     // Open Blocker
     const modules = [
@@ -224,9 +260,10 @@ async function setSettings(newSettings) {
     });
 
     // Auto Play
-    if (newSettings['Developer'].devAutoPlayOnStart) {
+    if (newSettings['Developer'].devAutoPlayOnStart && !window.hasRun) {
         document.querySelector(`section.PlayerBar_root__cXUnU * [data-test-id="PLAY_BUTTON"]`)
         ?.click();
+        window.hasRun = true;
     }
 
     // Update theme settings delay

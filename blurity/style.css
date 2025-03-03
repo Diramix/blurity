@@ -24,7 +24,7 @@
 	border-width: 3px;
 	border-style: solid;
 	border-color: #fff1;
-	height: calc(100% - 99px);
+	height: calc(100% - 13px);
 	margin-top: 14px;
 	min-width: 78px;
 	margin-left: 10px;
@@ -41,8 +41,14 @@ section.PlayerBar_root__cXUnU {
 	z-index: 401;
 }
 
-.Content_main__8_wIa {
-	margin-bottom: 85px;
+@media (min-width: 1079px) {
+    .Content_main__8_wIa {
+        margin-bottom: 85px;
+    }
+
+	.NavbarDesktop_root__scYzp {
+		height: calc(100% - 99px);
+	}
 }
 
 .Content_main__8_wIa,
@@ -91,8 +97,10 @@ section.PlayerBar_root__cXUnU {
 	background: 0;
 }
 
-.QualitySettingsModal_root__f3gE2 {
-	margin-bottom: 85px;
+@media (min-width: 1079px) {
+	.QualitySettingsModal_root__f3gE2 {
+		margin-bottom: 85px;
+	}
 }
 
 [data-test-id="QUALITY_SETTINGS_CONTEXT_MENU"] {
@@ -110,11 +118,6 @@ section.PlayerBar_root__cXUnU {
 [data-test-id="MY_VIBE_PLAY_BUTTON"] {
 	background: #fff1;
 	color: #fff;
-}
-
-.VibeBlock_root__z7LtR {
-	min-height: 400px;
-	max-height: 400px;
 }
 
 .VibeSettings_root__ufZlV {
