@@ -11,5 +11,5 @@ if exist "%target%" (
 echo Creating symbolic link: "%target%" -> "%link%"
 mklink /d "%target%" "%link%"
 
-echo Opening folder: "%APPDATA%\PulseSync\themes"
-explorer "%APPDATA%\PulseSync\themes"
+echo Opening folder: "%APPDATA%\PulseSync\addons"
+explorer "%APPDATA%\PulseSync\addons"

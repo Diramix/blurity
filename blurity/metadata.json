@@ -5,7 +5,7 @@
   "author": ["diram1x"],
   "type": "theme",
   "description": "Ставит картинку альбома на фон и размывает все элементы!",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "css": "style.css",
   "script": "script.js",
   "tags": ["Blur", "Colored"]
